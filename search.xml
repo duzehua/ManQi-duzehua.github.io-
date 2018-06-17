@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[机器人学-学习笔记]]></title>
-    <url>%2F2018%2F06%2F17%2F%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%2F</url>
-    <content type="text"><![CDATA[机器人学-学习笔记前言:​ ——距离放下这门课已经差不多一年了, 知识点也已经忘了十有七八. 真是年龄越长, 忘性越大. 遂打算业余时间翻看翻看之前的书籍, 做做笔记. 也不枉学过一番. 基础知识机器人位(置)姿(态) 表示​ 由于需要描述机器人不同部件之间, 以及机器人与外界之间的相对关系(通常指位姿关系), 需用到空间位置矢量, 姿态角等信息. 空间位置​ 通常使用笛卡尔空间坐标系描述相对位置关系, 应用3x1的位置矢量描述空间任意一点的位置. 对笛卡尔坐标系{A}, 空间任意一点p的位置可描述为:$${}^Ap = \left[ {\begin{array}{*{20}{c}} \ \ \\end{array}} \right]$$ 参考文献: 机器人学, 蔡自兴 …]]></content>
-      <categories>
-        <category>机器人</category>
-      </categories>
-      <tags>
-        <tag>机器人学, 运动学, 动力学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F06%2F16%2Fold%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
