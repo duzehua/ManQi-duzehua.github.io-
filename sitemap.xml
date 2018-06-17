@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://duzehua.github.io/2018/06/16/hello-world/</loc>
+    
+    <lastmod>2018-06-17T04:42:20.083Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://duzehua.github.io/categories/index.html</loc>
     
     <lastmod>2018-06-17T04:36:33.720Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://duzehua.github.io/about/index.html</loc>
     
     <lastmod>2018-06-17T04:29:01.478Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://duzehua.github.io/2018/06/16/hello-world/</loc>
-    
-    <lastmod>2018-06-17T04:16:10.107Z</lastmod>
     
   </url>
   
