@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://duzehua.github.io/"/>
-  <updated>2018-06-17T13:41:52.746Z</updated>
+  <updated>2018-06-17T13:55:29.379Z</updated>
   <id>https://duzehua.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://duzehua.github.io/2018/06/17/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/"/>
     <id>https://duzehua.github.io/2018/06/17/机器人学/</id>
     <published>2018-06-17T13:15:37.950Z</published>
-    <updated>2018-06-17T13:41:52.746Z</updated>
+    <updated>2018-06-17T13:55:29.379Z</updated>
     
     <summary type="html">
     
@@ -38,7 +38,11 @@
       <category term="机器人" scheme="https://duzehua.github.io/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
     
-      <category term="机器人学 / 运动学 / 动力学" scheme="https://duzehua.github.io/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6-%E8%BF%90%E5%8A%A8%E5%AD%A6-%E5%8A%A8%E5%8A%9B%E5%AD%A6/"/>
+      <category term="机器人学" scheme="https://duzehua.github.io/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/"/>
+    
+      <category term="运动学" scheme="https://duzehua.github.io/tags/%E8%BF%90%E5%8A%A8%E5%AD%A6/"/>
+    
+      <category term="动力学" scheme="https://duzehua.github.io/tags/%E5%8A%A8%E5%8A%9B%E5%AD%A6/"/>
     
   </entry>
   
