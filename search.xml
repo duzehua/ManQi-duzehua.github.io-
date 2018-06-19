@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python-学习笔记]]></title>
+    <url>%2F2018%2F06%2F19%2FPython%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[前言:​ 边走边学. SQL Server 数据库(待完善):系统环境: Win7 python环境: python3.x 导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect("Provider=SQLOLEDB; SERVER='IP地址:端口'; Initial Catalog=数据库名称;User Id=sa; Password=密码; ")# 方法二conn = pymssql.connect(host='IP地址:端口', user='sa', password='密码', database='数据库名称', charset='utf8') 使用连接对象获得一个cursor对象 1cursor = conn.cursor() 使用cursor操作数据库操 命令汇总: callproc(self, procname, args): execute(self, query, args): executemany(self, query, args): nextset(self): 12345# 使用示例sql="insert into student values (%s,%s,%s)" # 所有数据类型均用s%param=(1, ManQi,18) # param应为tuple或list# 插入一条数据n=cursor.execute(sql,param) 执行cursor接收操作数据库返回值. 方法汇总: fetchall(self): 接收全部元组. fetchmany(self, size=None): 接收不大于size条返回结果行. fetchone(self): 返回一条元组. scroll(self, value, mode=’relative’): 1result = cursor.fetchall() # result为tuple类型, 其中单条结果也为tuple类型数据, 在对数据库进行增删操作后, 需提交. 否则修改无效. 12 操作结束, 执行关闭操作. 12cursor.close() # 关闭指针对象conn.close() # 关闭连接对象 附, 简单的数据库语句 1234567891011121314151617/*表: student结构: id(int), name(varchar(MAX)), age(varchar(MAX))*/--插入一条数据insert into student values (1,ManQi,18)--返回名为ManQi, 且年龄为空的第一条数据select top 1 id from student where (name = 'ManQi') and (age is null)--更新id为1的名字update student set name = 'TY' where id = 1--即删除字段为某值的所有记录delete from 表名 where 字段=某值 --将表中字段为某值的替换为nullupdate 表名 set 字段=null where 字段=某值 --显示表格所有信息select * from student/*注意到, sql中空为null, python中为none*/]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[机器人学-学习笔记]]></title>
     <url>%2F2018%2F06%2F17%2F%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%2F</url>
-    <content type="text"><![CDATA[前言:​ ——距离放下这门课已经差不多一年了, 知识点也已经忘了十有七八. 真是年龄越长, 忘性越大. 遂打算业余时间翻看翻看之前的书籍, 做做笔记. 也不枉学过一番. 基础知识机器人位(置)姿(态) 表示​ 由于需要描述机器人不同部件之间, 以及机器人与外界之间的相对关系(通常指位姿关系), 需用到空间位置矢量, 姿态角等信息. 空间位置​ 通常使用笛卡尔空间坐标系描述相对位置关系, 应用3x1的位置矢量描述空间任意一点的位置. 对笛卡尔坐标系{A}, 空间任意一点p的位置可描述为: {}^Ap = \left[ {\begin{array}{*{20}{c}} {p_x} \\ {p_y} \\ {p_z} \\ \end{array}} \right]参考文献: 机器人学, 蔡自兴 …]]></content>
+    <content type="text"><![CDATA[前言:​ ——距离放下这门课已经差不多一年了, 知识点也已经忘了十有七八. 真是年龄越长, 忘性越大. 遂打算业余时间翻看翻看之前的书籍, 做做笔记. 也不枉学过一番. 基础知识机器人位(置)姿(态) 表示​ 由于需要描述机器人不同部件之间, 以及机器人与外界之间的相对关系(通常指位姿关系), 需用到空间位置矢量, 姿态角等信息. 空间位置​ 通常使用笛卡尔空间坐标系描述相对位置关系, 应用3x1的位置矢量描述空间任意一点的位置. 对笛卡尔坐标系{A}, 空间任意一点p的位置可描述为: {}^Ap = \left[ {\begin{array}{*{20}{c}} {p_x} \\ {p_y} \\ {p_z} \\ \end{array}} \right]$p_x$ , $p_y$ 和$p_z$ 为点p 沿坐标系{A}的x,y,z三个轴线方向的坐标分量. 其中, $^Ap$ 中上标A代表参考坐标系{A}, 称$^Ap$为位置矢量. 姿态描述​ 为完成位姿关系的描述, 除要表示空间位置关系外, 还需要表示物体此时所处姿态(可理解为朝向). 首先直接来看一组姿态表示, 刚体B在坐标系{A} 中的姿态描述: _B^AR = \left[ {\begin{array}{*{20}{c}} {^A{x_B}} & {^A{y_B}} & {^A{z_B}} \\ \end{array}} \right] = \left[ {\begin{array}{*{20}{c}} {r_{11}} & {r_{12}} & {r_{13}} \\ {r_{21}} & {r_{22}} & {r_{23}} \\ {r_{31}} & {r_{32}} & {r_{33}} \\ \end{array}} \right]其中, $_B^AR $表示以坐标系{A}为参考坐标系, 刚体B的姿态表示. 可以理解为假如你是这个刚体, 以大地上某个固定的坐标系为参考坐标系. 你相对于这个坐标系的朝向(姿态), 朝东还是朝西多少度, 朝上还是朝下多少度, 朝南还是朝北多少度. 在此, 以后 参考文献: 机器人学, 蔡自兴 …]]></content>
       <categories>
         <category>机器人</category>
       </categories>
