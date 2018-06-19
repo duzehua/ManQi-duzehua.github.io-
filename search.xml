@@ -1,32 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[Python-学习笔记]]></title>
-    <url>%2F2018%2F06%2F19%2FPython%E5%AD%A6%E4%B9%A0%2F</url>
-    <content type="text"><![CDATA[前言:​ 边走边学. SQL Server 数据库(待完善):系统环境: Win7 python环境: python3.x 导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect("Provider=SQLOLEDB; SERVER='IP地址:端口'; Initial Catalog=数据库名称;User Id=sa; Password=密码; ")# 方法二conn = pymssql.connect(host='IP地址:端口', user='sa', password='密码', database='数据库名称', charset='utf8') 使用连接对象获得一个cursor对象 1cursor = conn.cursor() 使用cursor操作数据库操 命令汇总: callproc(self, procname, args): execute(self, query, args): executemany(self, query, args): nextset(self): 12345# 使用示例sql="insert into student values (%s,%s,%s)" # 所有数据类型均用s%param=(1, ManQi,18) # param应为tuple或list# 插入一条数据n=cursor.execute(sql,param) 执行cursor接收操作数据库返回值. 方法汇总: fetchall(self): 接收全部元组. fetchmany(self, size=None): 接收不大于size条返回结果行. fetchone(self): 返回一条元组. scroll(self, value, mode=’relative’): 1result = cursor.fetchall() # result为tuple类型, 其中单条结果也为tuple类型数据, 在对数据库进行增删操作后, 需提交. 否则修改无效. 12 操作结束, 执行关闭操作. 12cursor.close() # 关闭指针对象conn.close() # 关闭连接对象 附, 简单的数据库语句 1234567891011121314151617/*表: student结构: id(int), name(varchar(MAX)), age(varchar(MAX))*/--插入一条数据insert into student values (1,ManQi,18)--返回名为ManQi, 且年龄为空的第一条数据select top 1 id from student where (name = 'ManQi') and (age is null)--更新id为1的名字update student set name = 'TY' where id = 1--即删除字段为某值的所有记录delete from 表名 where 字段=某值 --将表中字段为某值的替换为nullupdate 表名 set 字段=null where 字段=某值 --显示表格所有信息select * from student/*注意到, sql中空为null, python中为none*/]]></content>
+<search> 
+  
+    
+    <entry>
+      <title>Python-学习笔记</title>
+      <link href="/2018/06/19/Python%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2018/06/19/Python%E5%AD%A6%E4%B9%A0/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>​    边走边学.</p><h2 id="SQL-Server-数据库-待完善"><a href="#SQL-Server-数据库-待完善" class="headerlink" title="SQL Server 数据库(待完善):"></a>SQL Server 数据库(待完善):</h2><p>系统环境: Win7</p><p>python环境: python3.x</p><p>导入环境:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymssql</span><br><span class="line"><span class="keyword">import</span> adodbapi</span><br></pre></td></tr></table></figure><p>建立数据库连接</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">conn = adodbapi.connect(<span class="string">"Provider=SQLOLEDB; SERVER='IP地址:端口'; Initial Catalog=数据库名称;User Id=sa; Password=密码; "</span>)</span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line">conn = pymssql.connect(host=<span class="string">'IP地址:端口'</span>, user=<span class="string">'sa'</span>, password=<span class="string">'密码'</span>, database=<span class="string">'数据库名称'</span>, charset=<span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure><p>使用连接对象获得一个cursor对象</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cursor = conn.cursor()</span><br></pre></td></tr></table></figure><p>使用cursor操作数据库操 </p><p>命令汇总:</p><ul><li>callproc(self, procname, args):  </li><li>execute(self, query, args):  </li><li>executemany(self, query, args):  </li><li>nextset(self):</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用示例</span></span><br><span class="line">sql=<span class="string">"insert into student values (%s,%s,%s)"</span>  <span class="comment"># 所有数据类型均用s%</span></span><br><span class="line">param=(<span class="number">1</span>, ManQi,<span class="number">18</span>)  <span class="comment"># param应为tuple或list</span></span><br><span class="line"><span class="comment"># 插入一条数据</span></span><br><span class="line">n=cursor.execute(sql,param)</span><br></pre></td></tr></table></figure><p>执行cursor接收操作数据库返回值.</p><p>方法汇总:</p><ul><li>fetchall(self): 接收全部元组.</li><li>fetchmany(self, size=None): 接收不大于size条返回结果行.</li><li>fetchone(self): 返回一条元组.</li><li>scroll(self, value, mode=’relative’): </li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = cursor.fetchall()  <span class="comment"># result为tuple类型, 其中单条结果也为tuple类型数据,</span></span><br></pre></td></tr></table></figure><p>在对数据库进行增删操作后, 需提交. 否则修改无效.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conn.commit()</span><br></pre></td></tr></table></figure><p>操作结束, 执行关闭操作.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cursor.close()  <span class="comment"># 关闭指针对象</span></span><br><span class="line">conn.close()  <span class="comment"># 关闭连接对象</span></span><br></pre></td></tr></table></figure><p>附, 简单的数据库语句</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">表: student</span></span><br><span class="line"><span class="comment">结构: id(int), name(varchar(MAX)), age(varchar(MAX))</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">--插入一条数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span> (<span class="number">1</span>,ManQi,<span class="number">18</span>)</span><br><span class="line"><span class="comment">--返回名为ManQi, 且年龄为空的第一条数据</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">1</span> <span class="keyword">id</span> <span class="keyword">from</span> student <span class="keyword">where</span> (<span class="keyword">name</span> = <span class="string">'ManQi'</span>) <span class="keyword">and</span> (age <span class="keyword">is</span> <span class="literal">null</span>)</span><br><span class="line"><span class="comment">--更新id为1的名字</span></span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> <span class="keyword">name</span> = <span class="string">'TY'</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span></span><br><span class="line"><span class="comment">--即删除字段为某值的所有记录</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 字段=某值 </span><br><span class="line"><span class="comment">--将表中字段为某值的替换为null</span></span><br><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 字段=<span class="literal">null</span> <span class="keyword">where</span> 字段=某值 </span><br><span class="line"><span class="comment">--显示表格所有信息</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student</span><br><span class="line"><span class="comment">/*注意到, sql中空为null, python中为none*/</span></span><br></pre></td></tr></table></figure>]]></content>
+      
       <categories>
-        <category>编程</category>
+          
+          <category> 编程 </category>
+          
       </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[机器人学-学习笔记]]></title>
-    <url>%2F2018%2F06%2F17%2F%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%2F</url>
-    <content type="text"><![CDATA[前言:​ ——距离放下这门课已经差不多一年了, 知识点也已经忘了十有七八. 真是年龄越长, 忘性越大. 遂打算业余时间翻看翻看之前的书籍, 做做笔记. 也不枉学过一番. 基础知识机器人位(置)姿(态) 表示​ 由于需要描述机器人不同部件之间, 以及机器人与外界之间的相对关系(通常指位姿关系), 需用到空间位置矢量, 姿态角等信息. 空间位置​ 通常使用笛卡尔空间坐标系描述相对位置关系, 应用3x1的位置矢量描述空间任意一点的位置. 对笛卡尔坐标系{A}, 空间任意一点p的位置可描述为: {}^Ap = \left[ {\begin{array}{*{20}{c}} {p_x} \\ {p_y} \\ {p_z} \\ \end{array}} \right]$p_x$ , $p_y$ 和$p_z$ 为点p 沿坐标系{A}的x,y,z三个轴线方向的坐标分量. 其中, $^Ap$ 中上标A代表参考坐标系{A}, 称$^Ap$为位置矢量. 姿态描述​ 为完成位姿关系的描述, 除要表示空间位置关系外, 还需要表示物体此时所处姿态(可理解为朝向). 首先直接来看一组姿态表示, 刚体B在坐标系{A} 中的姿态描述: _B^AR = \left[ {\begin{array}{*{20}{c}} {^A{x_B}} & {^A{y_B}} & {^A{z_B}} \\ \end{array}} \right] = \left[ {\begin{array}{*{20}{c}} {r_{11}} & {r_{12}} & {r_{13}} \\ {r_{21}} & {r_{22}} & {r_{23}} \\ {r_{31}} & {r_{32}} & {r_{33}} \\ \end{array}} \right]其中, $_B^AR $表示以坐标系{A}为参考坐标系, 刚体B的姿态表示. 可以理解为假如你是这个刚体, 以大地上某个固定的坐标系为参考坐标系. 你相对于这个坐标系的朝向(姿态), 朝东还是朝西多少度, 朝上还是朝下多少度, 朝南还是朝北多少度. 在此, 以后 参考文献: 机器人学, 蔡自兴 …]]></content>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>机器人学-学习笔记</title>
+      <link href="/2018/06/17/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/"/>
+      <url>/2018/06/17/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>​    ——距离放下这门课已经差不多一年了, 知识点也已经忘了十有七八. 真是年龄越长, 忘性越大. 遂打算业余时间翻看翻看之前的书籍, 做做笔记. 也不枉学过一番.</p><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="机器人位-置-姿-态-表示"><a href="#机器人位-置-姿-态-表示" class="headerlink" title="机器人位(置)姿(态) 表示"></a>机器人位(置)姿(态) 表示</h3><p>​    由于需要描述机器人不同部件之间, 以及机器人与外界之间的相对关系(通常指位姿关系), 需用到空间位置矢量, 姿态角等信息.</p><h4 id="空间位置"><a href="#空间位置" class="headerlink" title="空间位置"></a>空间位置</h4><p>​    通常使用笛卡尔空间坐标系描述相对位置关系, 应用3x1的位置矢量描述空间任意一点的位置. 对笛卡尔坐标系{<em>A</em>}, 空间任意一点p的位置可描述为:</p><script type="math/tex; mode=display">{}^Ap = \left[ {\begin{array}{*{20}{c}}   {p_x}  \\   {p_y}  \\   {p_z}  \\\end{array}} \right]</script><p>$p_x$ , $p_y$ 和$p_z$ 为点<em>p</em> 沿坐标系{<em>A</em>}的<em>x,y,z</em>三个轴线方向的坐标分量. 其中, $^Ap$ 中上标<em>A</em>代表参考坐标系{<em>A</em>}, 称$^Ap$为位置矢量.</p><h4 id="姿态描述"><a href="#姿态描述" class="headerlink" title="姿态描述"></a>姿态描述</h4><p>​    为完成位姿关系的描述, 除要表示空间位置关系外, 还需要表示物体此时所处姿态(可理解为朝向).  首先直接来看一组姿态表示, 刚体<em>B</em>在坐标系{<em>A</em>} 中的姿态描述:</p><script type="math/tex; mode=display">_B^AR = \left[ {\begin{array}{*{20}{c}}   {^A{x_B}} & {^A{y_B}} & {^A{z_B}}  \\\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}   {r_{11}} & {r_{12}} & {r_{13}}  \\   {r_{21}} & {r_{22}} & {r_{23}}  \\   {r_{31}} & {r_{32}} & {r_{33}}  \\\end{array}} \right]</script><p>其中, $_B^AR $表示以坐标系{<em>A</em>}为参考坐标系, 刚体<em>B</em>的姿态表示. 可以理解为假如你是这个刚体, 以大地上某个固定的坐标系为参考坐标系. 你相对于这个坐标系的朝向(姿态), 朝东还是朝西多少度, 朝上还是朝下多少度, 朝南还是朝北多少度. 在此, 以后 </p><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献:"></a>参考文献:</h2><ol><li>机器人学, 蔡自兴</li><li>…</li></ol>]]></content>
+      
       <categories>
-        <category>机器人</category>
+          
+          <category> 机器人 </category>
+          
       </categories>
-      <tags>
-        <tag>机器人学</tag>
-        <tag>运动学</tag>
-        <tag>动力学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F06%2F16%2Fold%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 机器人学 </tag>
+            
+            <tag> 运动学 </tag>
+            
+            <tag> 动力学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2018/06/16/old/hello-world/"/>
+      <url>/2018/06/16/old/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+    </entry>
+    
+  
+  
 </search>

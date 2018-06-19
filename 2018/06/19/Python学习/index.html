@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="杜泽华的博客">
 <meta property="og:description" content="前言:​    边走边学. SQL Server 数据库(待完善):系统环境: Win7 python环境: python3.x 导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect(&quot;Provider=SQLOLEDB; SERVER=&apos;IP地址:端口&apos;; Initial Catalog=数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-19T11:58:32.423Z">
+<meta property="og:updated_time" content="2018-06-19T12:02:59.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python-学习笔记">
 <meta name="twitter:description" content="前言:​    边走边学. SQL Server 数据库(待完善):系统环境: Win7 python环境: python3.x 导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect(&quot;Provider=SQLOLEDB; SERVER=&apos;IP地址:端口&apos;; Initial Catalog=数据">
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  475
+                  476
                 </span>
               
 
@@ -463,7 +463,7 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = cursor.fetchall()  <span class="comment"># result为tuple类型, 其中单条结果也为tuple类型数据,</span></span><br></pre></td></tr></table></figure>
 <p>在对数据库进行增删操作后, 需提交. 否则修改无效.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conn.commit()</span><br></pre></td></tr></table></figure>
 <p>操作结束, 执行关闭操作.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cursor.close()  <span class="comment"># 关闭指针对象</span></span><br><span class="line">conn.close()  <span class="comment"># 关闭连接对象</span></span><br></pre></td></tr></table></figure>
 <p>附, 简单的数据库语句</p>
