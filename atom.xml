@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://duzehua.github.io/"/>
-  <updated>2018-06-19T12:02:59.052Z</updated>
+  <updated>2018-06-20T12:33:25.717Z</updated>
   <id>https://duzehua.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python-学习笔记</title>
-    <link href="https://duzehua.github.io/2018/06/19/Python%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://duzehua.github.io/2018/06/19/Python学习/</id>
-    <published>2018-06-19T10:45:46.002Z</published>
-    <updated>2018-06-19T12:02:59.052Z</updated>
+    <title>原来是鸡汤啊~</title>
+    <link href="https://duzehua.github.io/2018/06/20/%E5%8E%9F%E6%9D%A5%E6%98%AF%E9%B8%A1%E6%B1%A4%E5%95%8A~/"/>
+    <id>https://duzehua.github.io/2018/06/20/原来是鸡汤啊~/</id>
+    <published>2018-06-20T12:24:51.033Z</published>
+    <updated>2018-06-20T12:33:25.717Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,34 @@
       
         
         
-          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言:&quot;&gt;&lt;/a&gt;前言:&lt;/h2&gt;&lt;p&gt;​    边走边学.&lt;/p&gt;
-&lt;h2 id=&quot;SQL-Server-数据库-待完善&quot;&gt;&lt;a
+          &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言:&quot;&gt;&lt;/a&gt;前言:&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;我不去想是否能够成功, 既然选择了远方,
+        
+      
+    
+    </summary>
+    
+      <category term="鸡汤" scheme="https://duzehua.github.io/categories/%E9%B8%A1%E6%B1%A4/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Python-学习笔记</title>
+    <link href="https://duzehua.github.io/2018/06/19/Python%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://duzehua.github.io/2018/06/19/Python学习/</id>
+    <published>2018-06-19T10:45:46.002Z</published>
+    <updated>2018-06-20T14:10:07.534Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言:&quot;&gt;&lt;/a&gt;前言:&lt;/h2&gt;&lt;p&gt;边走边学.&lt;/p&gt;
+&lt;p&gt;系统环境: Win7, Win10. X64&lt;/p&gt;
+&lt;p&gt;python环境:
         
       
     

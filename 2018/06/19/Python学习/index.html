@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="前言:​    边走边学. SQL Server 数据库(待完善):系统环境: Win7 python环境: python3.x 导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect(&quot;Provider=SQLOLEDB; SERVER=&apos;IP地址:端口&apos;; Initial Catalog=数据">
+<meta name="description" content="前言:边走边学. 系统环境: Win7, Win10. X64 python环境: python3.x 多线程与多进程:​    python中可方便实现多线程与多进程. 而由于全局解释器锁的存在, 多线程实际为将多个单线程拆分为执行序列, 每个时刻只执行其中一个线程, 因而python中的多线程更适合于IO密集型操作. 为充分利用多核cpu资源, 执行计算密集型操作, 可引用多进程操作. ​">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python-学习笔记">
 <meta property="og:url" content="https://duzehua.github.io/2018/06/19/Python学习/index.html">
 <meta property="og:site_name" content="杜泽华的博客">
-<meta property="og:description" content="前言:​    边走边学. SQL Server 数据库(待完善):系统环境: Win7 python环境: python3.x 导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect(&quot;Provider=SQLOLEDB; SERVER=&apos;IP地址:端口&apos;; Initial Catalog=数据">
+<meta property="og:description" content="前言:边走边学. 系统环境: Win7, Win10. X64 python环境: python3.x 多线程与多进程:​    python中可方便实现多线程与多进程. 而由于全局解释器锁的存在, 多线程实际为将多个单线程拆分为执行序列, 每个时刻只执行其中一个线程, 因而python中的多线程更适合于IO密集型操作. 为充分利用多核cpu资源, 执行计算密集型操作, 可引用多进程操作. ​">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-19T12:02:59.052Z">
+<meta property="og:updated_time" content="2018-06-20T14:10:07.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python-学习笔记">
-<meta name="twitter:description" content="前言:​    边走边学. SQL Server 数据库(待完善):系统环境: Win7 python环境: python3.x 导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect(&quot;Provider=SQLOLEDB; SERVER=&apos;IP地址:端口&apos;; Initial Catalog=数据">
+<meta name="twitter:description" content="前言:边走边学. 系统环境: Win7, Win10. X64 python环境: python3.x 多线程与多进程:​    python中可方便实现多线程与多进程. 而由于全局解释器锁的存在, 多线程实际为将多个单线程拆分为执行序列, 每个时刻只执行其中一个线程, 因而python中的多线程更适合于IO密集型操作. 为充分利用多核cpu资源, 执行计算密集型操作, 可引用多进程操作. ​">
 
 
 
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  476
+                  1,442
                 </span>
               
 
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  6
                 </span>
               
             </div>
@@ -435,10 +435,32 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>​    边走边学.</p>
-<h2 id="SQL-Server-数据库-待完善"><a href="#SQL-Server-数据库-待完善" class="headerlink" title="SQL Server 数据库(待完善):"></a>SQL Server 数据库(待完善):</h2><p>系统环境: Win7</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>边走边学.</p>
+<p>系统环境: Win7, Win10. X64</p>
 <p>python环境: python3.x</p>
-<p>导入环境:</p>
+<h2 id="多线程与多进程"><a href="#多线程与多进程" class="headerlink" title="多线程与多进程:"></a>多线程与多进程:</h2><p>​    python中可方便实现多线程与多进程. 而由于全局解释器锁的存在, 多线程实际为将多个单线程拆分为执行序列, 每个时刻只执行其中一个线程, 因而python中的多线程更适合于IO密集型操作. 为充分利用多核cpu资源, 执行计算密集型操作, 可引用多进程操作.</p>
+<p>​    接下在就工程中涉及到的多线程与多进程应用的数种方法, 示例记录, 便于记忆.</p>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程:"></a>多线程:</h3><p>导入环境</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br></pre></td></tr></table></figure>
+<p>在派生类中重写父类threading.Thread的run()方法. 注意, 子类中只有<strong>init</strong>()和<strong>run</strong>()方法被重写. 然后在主线程中生成子线程类的对象, 调用<strong>start</strong>()方法运行.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> iterNum, threadLock  <span class="comment"># 多线程中, 通过定义全局变量实现数据共享</span></span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> threadLock.acquire():</span><br><span class="line">            print(iterNum , self.name)</span><br><span class="line">            iterNum += <span class="number">1</span></span><br><span class="line">            threadLock.release()</span><br></pre></td></tr></table></figure>
+<p>主程序中创建线程并调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">"__main__"</span> == __name__:</span><br><span class="line">    </span><br><span class="line">    start_time = time.time()</span><br><span class="line">    print(<span class="string">'主线程名称：'</span>, threading.current_thread().name)</span><br><span class="line"></span><br><span class="line">    iterNum = <span class="number">1</span></span><br><span class="line">    threadList = []</span><br><span class="line">    lock = threading.Lock()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 创建200个线程, 存入list</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        thread_ = MyThread()</span><br><span class="line">        threadList.append(index)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 开启线程</span></span><br><span class="line">    <span class="keyword">for</span> thread_ <span class="keyword">in</span> ThreadList:</span><br><span class="line">        <span class="comment"># thread_.setDaemon(True)  # 设置线程守护</span></span><br><span class="line">        thread_.start()</span><br><span class="line">            </span><br><span class="line">    print(<span class="string">'主线程: '</span> + threading.current_thread().name + <span class="string">'结束'</span>)</span><br><span class="line">    print(<span class="string">'共计耗时：'</span>, time.time()-start_time)</span><br></pre></td></tr></table></figure>
+<p>上述代码中, 通过start()方法开启线程. 注意到, 开启线程前存在一个注释掉的守护线程<strong>setDaemon</strong>().  <strong>setDaemon</strong>()默认<strong>false</strong>, 表示主线程执行完任务后会退出, 而子线程继续执行直到任务完成. 该条件下, 结果如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>接下来, 取消注释, 设置守护线程为<strong>true</strong>, 代码为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">"__main__"</span> == __name__:</span><br><span class="line">    </span><br><span class="line">    start_time = time.time()</span><br><span class="line">    print(<span class="string">'主线程名称：'</span>, threading.current_thread().name)</span><br><span class="line"></span><br><span class="line">    iterNum = <span class="number">1</span></span><br><span class="line">    threadList = []</span><br><span class="line">    lock = threading.Lock()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 创建200个线程, 存入list</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        thread_ = MyThread()</span><br><span class="line">        threadList.append(index)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 开启线程</span></span><br><span class="line">    <span class="keyword">for</span> thread_ <span class="keyword">in</span> ThreadList:</span><br><span class="line">        thread_.setDaemon(<span class="keyword">True</span>)  <span class="comment"># 设置线程守护</span></span><br><span class="line">        thread_.start()</span><br><span class="line">            </span><br><span class="line">    print(<span class="string">'主线程: '</span> + threading.current_thread().name + <span class="string">'结束'</span>)</span><br><span class="line">    print(<span class="string">'共计耗时：'</span>, time.time()-start_time)</span><br></pre></td></tr></table></figure>
+<p>结果如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">主线程名称： MainThread</span><br><span class="line">主线程: MainThread结束</span><br><span class="line">共计耗时： <span class="number">0.0009665489196777344</span></span><br><span class="line"></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>可以看出, 主线程运行结束, 由于守护线程的缘故, 直接将子线程杀死, 不再继续运行. 而部分条件下, 我们需要的结果是当主线程开启, 等待子线程运行结束后, 再结束主线程. 此时, 可以通过使用<strong>join</strong>()来实现, 代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">"__main__"</span> == __name__:</span><br><span class="line">    </span><br><span class="line">    start_time = time.time()</span><br><span class="line">    print(<span class="string">'主线程名称：'</span>, threading.current_thread().name)</span><br><span class="line"></span><br><span class="line">    iterNum = <span class="number">1</span></span><br><span class="line">    threadList = []</span><br><span class="line">    lock = threading.Lock()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 创建200个线程, 存入list</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        thread_ = MyThread()</span><br><span class="line">        threadList.append(index)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 开启线程</span></span><br><span class="line">    <span class="keyword">for</span> thread_ <span class="keyword">in</span> ThreadList:</span><br><span class="line">        thread_.setDaemon(<span class="keyword">True</span>)  <span class="comment"># 设置线程守护</span></span><br><span class="line">        thread_.start()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> thread_ <span class="keyword">in</span> ThreadList:</span><br><span class="line">        thread_.join()</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">'主线程: '</span> + threading.current_thread().name + <span class="string">'结束'</span>)</span><br><span class="line">    print(<span class="string">'共计耗时：'</span>, time.time()-start_time)</span><br></pre></td></tr></table></figure>
+<p><strong>join</strong>()中存在一个<strong>timeout</strong>参数, 当设置守护线程时, 主线程等待<strong>timeout</strong>时间后再执行杀死子线程的操作. 当<strong>timeout</strong>不设定时, 表示等待子线程运行结束后, 再结束主线程. 上述代码运行结果如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">主线程名称： MainThread</span><br><span class="line"><span class="number">1</span> Thread<span class="number">-5</span></span><br><span class="line"><span class="number">2</span> Thread<span class="number">-2</span></span><br><span class="line"><span class="number">3</span> Thread<span class="number">-3</span></span><br><span class="line"><span class="number">4</span> Thread<span class="number">-1</span></span><br><span class="line"><span class="number">5</span> Thread<span class="number">-4</span></span><br><span class="line">主线程: MainThread结束</span><br><span class="line">共计耗时： <span class="number">1.006718397140503</span></span><br><span class="line"></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>可以看出, 主线程以及计时均等待子线程结束后才开始实现. 当设定<strong>timeout</strong>时, 以下述两种情况为例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>导入环境</p>
+<p>待补充</p>
+<h2 id="SQL-Server-数据库-待完善"><a href="#SQL-Server-数据库-待完善" class="headerlink" title="SQL Server 数据库(待完善):"></a>SQL Server 数据库(待完善):</h2><p>导入环境:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymssql</span><br><span class="line"><span class="keyword">import</span> adodbapi</span><br></pre></td></tr></table></figure>
 <p>建立数据库连接</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">conn = adodbapi.connect(<span class="string">"Provider=SQLOLEDB; SERVER='IP地址:端口'; Initial Catalog=数据库名称;User Id=sa; Password=密码; "</span>)</span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line">conn = pymssql.connect(host=<span class="string">'IP地址:端口'</span>, user=<span class="string">'sa'</span>, password=<span class="string">'密码'</span>, database=<span class="string">'数据库名称'</span>, charset=<span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure>
@@ -507,6 +529,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/20/原来是鸡汤啊~/" rel="prev" title="原来是鸡汤啊~">
+                原来是鸡汤啊~ <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -591,7 +617,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -602,7 +628,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -662,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Server-数据库-待完善"><span class="nav-text">SQL Server 数据库(待完善):</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程与多进程"><span class="nav-text">多线程与多进程:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程"><span class="nav-text">多线程:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多进程"><span class="nav-text">多进程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Server-数据库-待完善"><span class="nav-text">SQL Server 数据库(待完善):</span></a></li></ol></div>
             
 
           </div>
