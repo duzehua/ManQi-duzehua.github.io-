@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="杜泽华的博客">
 <meta property="og:description" content="前言:边走边学. 系统环境: Win7, Win10. X64 python环境: python3.x 多线程与多进程:​    python中可方便实现多线程与多进程. 而由于全局解释器锁的存在, 多线程实际为将多个单线程拆分为执行序列, 每个时刻只执行其中一个线程, 因而python中的多线程更适合于IO密集型操作. 为充分利用多核cpu资源, 执行计算密集型操作, 可引用多进程操作. ​">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-20T14:20:53.179Z">
+<meta property="og:updated_time" content="2018-06-20T15:21:33.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python-学习笔记">
 <meta name="twitter:description" content="前言:边走边学. 系统环境: Win7, Win10. X64 python环境: python3.x 多线程与多进程:​    python中可方便实现多线程与多进程. 而由于全局解释器锁的存在, 多线程实际为将多个单线程拆分为执行序列, 每个时刻只执行其中一个线程, 因而python中的多线程更适合于IO密集型操作. 为充分利用多核cpu资源, 执行计算密集型操作, 可引用多进程操作. ​">
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,678
+                  1,970
                 </span>
               
 
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  9
                 </span>
               
             </div>
@@ -459,7 +459,13 @@
 <p>可以看出, 主线程以及计时均等待子线程结束后才开始实现. 当设定<strong>timeout</strong>时, 以下述两种情况为例:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设定 timeout = 0, 则5个子线程共计等待 0 * 5 = 0s, 即主线程不等待直接杀死子线程.</span></span><br><span class="line"><span class="keyword">for</span> thread_ <span class="keyword">in</span> ThreadList:</span><br><span class="line">    thread_.join(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">主线程名称： MainThread</span><br><span class="line">主线程: MainThread结束</span><br><span class="line">共计耗时： <span class="number">0.005353212356567383</span></span><br><span class="line"></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设定 timeout = 0.2, 则5个子线程共计等待 0.2 * 5 = 1s, 主线程等待1s后杀死子线程.</span></span><br><span class="line"><span class="keyword">for</span> thread_ <span class="keyword">in</span> ThreadList:</span><br><span class="line">    thread_.join(<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">主线程名称： MainThread</span><br><span class="line"><span class="number">1</span> Thread<span class="number">-3</span></span><br><span class="line"><span class="number">2</span> Thread<span class="number">-1</span></span><br><span class="line"><span class="number">3</span> Thread<span class="number">-5</span></span><br><span class="line">主线程: MainThread结束</span><br><span class="line">共计耗时： <span class="number">1.0059242248535156</span></span><br><span class="line"></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>可以看出, 当<strong>timeout</strong>设定为0.2s时, 有三个子线程运行结束, 仍有两个没来得及运行即被杀死.</p>
-<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>导入环境</p>
+<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>​    相对于多线程来说, 多进程操作中, 每一个子进程会作为真正独立的程序运行. 多线程运行过程中, 一个线程异常将导致整个程序故障. 而多进程中, 一个子进程异常基本不会影响其他进程的运行, 因而具有一定的稳定性, 但也较难以调试和控制. 此外, 多进程间的数据传递无法通过设置全局变量实现, 必须通过其专有的队列, 管道或共享内存的方式实现.</p>
+<p>导入环境</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br></pre></td></tr></table></figure>
+<p>为防止由于多个子进程导致的系统假死, 在主函数的最开始, 添加如下语句:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multiprocessing.freeze_support()</span><br></pre></td></tr></table></figure>
+<p>启动子进程的几种方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1</span></span><br><span class="line">process1 = multiprocessing.Process(target=processFun1, args=(param,))</span><br><span class="line">process2 = multiprocessing.Process(target=processFun2, args=(param,))</span><br><span class="line"></span><br><span class="line">process1.start()</span><br><span class="line">process2.start()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2:</span></span><br><span class="line">pool = multiprocessing.Pool(processes=<span class="number">2</span>)  <span class="comment"># 创建进程池, 参数可缺省</span></span><br><span class="line"></span><br><span class="line">pool.apply_async(processFun1, (param, ))</span><br><span class="line">pool.apply_async(processFun2, (param, ))</span><br><span class="line"></span><br><span class="line">pool.close() <span class="comment"># 关闭进程池，表示不能在往进程池中添加进程</span></span><br><span class="line">pool.join()  <span class="comment"># 含义同多线程join()，必须在close()之后调用</span></span><br></pre></td></tr></table></figure>
 <p>待补充</p>
 <h2 id="SQL-Server-数据库-待完善"><a href="#SQL-Server-数据库-待完善" class="headerlink" title="SQL Server 数据库(待完善):"></a>SQL Server 数据库(待完善):</h2><p>导入环境:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymssql</span><br><span class="line"><span class="keyword">import</span> adodbapi</span><br></pre></td></tr></table></figure>
