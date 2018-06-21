@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://duzehua.github.io/"/>
-  <updated>2018-06-20T14:50:53.543Z</updated>
+  <updated>2018-06-21T13:21:11.609Z</updated>
   <id>https://duzehua.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python-SQL Server数据库</title>
+    <link href="https://duzehua.github.io/2018/06/21/PythonSqlServer%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>https://duzehua.github.io/2018/06/21/PythonSqlServer数据库/</id>
+    <published>2018-06-21T13:18:20.612Z</published>
+    <updated>2018-06-21T13:21:11.609Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;SQL-Server-数据库-待完善&quot;&gt;&lt;a href=&quot;#SQL-Server-数据库-待完善&quot; class=&quot;headerlink&quot; title=&quot;SQL Server 数据库(待完善):&quot;&gt;&lt;/a&gt;SQL Server
+        
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://duzehua.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Python" scheme="https://duzehua.github.io/tags/Python/"/>
+    
+      <category term="数据库" scheme="https://duzehua.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python-多线程与多进程</title>
+    <link href="https://duzehua.github.io/2018/06/21/Python%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/"/>
+    <id>https://duzehua.github.io/2018/06/21/Python多线程多进程/</id>
+    <published>2018-06-21T13:18:19.487Z</published>
+    <updated>2018-06-21T13:59:31.085Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;多线程与多进程&quot;&gt;&lt;a href=&quot;#多线程与多进程&quot; class=&quot;headerlink&quot; title=&quot;多线程与多进程:&quot;&gt;&lt;/a&gt;多线程与多进程:&lt;/h2&gt;&lt;p&gt;​    python中可方便实现多线程与多进程. 而由于全局解释器锁的存在,
+        
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://duzehua.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Python" scheme="https://duzehua.github.io/tags/Python/"/>
+    
+      <category term="多线程" scheme="https://duzehua.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="多进程" scheme="https://duzehua.github.io/tags/%E5%A4%9A%E8%BF%9B%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>原来是鸡汤啊~</title>
