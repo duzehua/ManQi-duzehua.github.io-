@@ -46,6 +46,35 @@
   </entry>
   
   <entry>
+    <title>Python-pip安装报错无法卸载资源的处理方法</title>
+    <link href="https://www.duzehua.top/2021/01/12/Python-pip%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99%E6%97%A0%E6%B3%95%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/"/>
+    <id>https://www.duzehua.top/2021/01/12/Python-pip安装报错无法卸载资源处理方法/</id>
+    <published>2021-01-11T16:00:00.000Z</published>
+    <updated>2021-01-12T08:11:22.505Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在通过pip安装第三方资源包时，由于其可能牵扯到其它第三方包的更新，在某些特殊场景下可能会报错，如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://www.duzehua.top/categories/Python/"/>
+    
+    
+      <category term="pip" scheme="https://www.duzehua.top/tags/pip/"/>
+    
+      <category term="Python" scheme="https://www.duzehua.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>tf_app_flags_FLAGS</title>
     <link href="https://www.duzehua.top/2020/07/11/tf_app_flags_FLAGS/"/>
     <id>https://www.duzehua.top/2020/07/11/tf_app_flags_FLAGS/</id>
