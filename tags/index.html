@@ -86,11 +86,11 @@
 <meta name="description" content="兜兜转转 走走停停">
 <meta property="og:type" content="website">
 <meta property="og:title" content="标签">
-<meta property="og:url" content="https://duzehua.github.io/tags/index.html">
-<meta property="og:site_name" content="杜泽华的博客">
+<meta property="og:url" content="https://www.duzehua.top/tags/index.html">
+<meta property="og:site_name" content="泽华的巷子">
 <meta property="og:description" content="兜兜转转 走走停停">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-17T04:35:54.896Z">
+<meta property="og:updated_time" content="2018-06-17T04:35:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="标签">
 <meta name="twitter:description" content="兜兜转转 走走停停">
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://duzehua.github.io/tags/"/>
+  <link rel="canonical" href="https://www.duzehua.top/tags/"/>
 
 
 
 
 
-  <title>标签 | 杜泽华的博客</title>
+  <title>标签 | 泽华的巷子</title>
   
 
 
@@ -169,7 +169,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">杜泽华的博客</span>
+        <span class="site-title">泽华的巷子</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -317,10 +317,10 @@
         
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-                目前共计 7 个标签
+                目前共计 8 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/Python/" style="font-size: 30px; color: #111">Python</a> <a href="/tags/动力学/" style="font-size: 12px; color: #ccc">动力学</a> <a href="/tags/多线程/" style="font-size: 12px; color: #ccc">多线程</a> <a href="/tags/多进程/" style="font-size: 12px; color: #ccc">多进程</a> <a href="/tags/数据库/" style="font-size: 12px; color: #ccc">数据库</a> <a href="/tags/机器人学/" style="font-size: 12px; color: #ccc">机器人学</a> <a href="/tags/运动学/" style="font-size: 12px; color: #ccc">运动学</a>
+              <a href="/tags/Tensorflow/" style="font-size: 12px; color: #ccc">Tensorflow</a> <a href="/tags/code/" style="font-size: 30px; color: #111">code</a> <a href="/tags/博客搭建/" style="font-size: 12px; color: #ccc">博客搭建</a> <a href="/tags/可视化/" style="font-size: 21px; color: #6f6f6f">可视化</a> <a href="/tags/并行计算/" style="font-size: 12px; color: #ccc">并行计算</a> <a href="/tags/异常处理/" style="font-size: 12px; color: #ccc">异常处理</a> <a href="/tags/数据库/" style="font-size: 12px; color: #ccc">数据库</a> <a href="/tags/系统故障/" style="font-size: 12px; color: #ccc">系统故障</a>
             </div>
           </div>
         
@@ -342,9 +342,9 @@
           
 
   
-    <div id="gitalk-container">
-	</div>
- 
+    <div class="comments" id="comments">
+    </div>
+	
   
 
 
@@ -388,7 +388,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -399,7 +399,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -410,7 +410,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -463,7 +463,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -473,7 +473,7 @@
 </div>
 
 
-  <div class="powered-by">Home <a class="author" target="_blank" href="https://duzehua.github.io/">ManQi</a></div>
+  <div class="powered-by">Home <a class="author" target="_blank" href="http://www.duzehua.top/">ManQi</a></div>
 
 
 
@@ -649,23 +649,29 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'sPX0o44fG7dq9gedIVlh39d8-gzGzoHsz',
+        appKey: 'Fk54nNaGm0reomUGPA1Ht8r8',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: '6a5207a15b0610045855',
-          clientSecret: 'bc62feac9828288f5cb91dd6d1744c05957a8bef',
-          repo: 'duzehua.github.io',
-          owner: 'duzehua',
-          admin: ['duzehua'],
-          id: location.pathname,
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
-       </script>
 
 
   
@@ -992,6 +998,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("sPX0o44fG7dq9gedIVlh39d8-gzGzoHsz", "Fk54nNaGm0reomUGPA1Ht8r8");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

@@ -2,58 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://duzehua.github.io/2018/06/29/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/</loc>
+    <loc>https://www.duzehua.top/2021/01/12/Pythoh%E9%85%8D%E7%BD%AE%E6%B8%85%E5%8D%8E%E6%BA%90/</loc>
     
-    <lastmod>2018-06-29T14:34:14.822Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://duzehua.github.io/2018/06/21/Python%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
-    
-    <lastmod>2018-06-21T13:59:31.085Z</lastmod>
+    <lastmod>2021-01-12T07:40:12.042Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://duzehua.github.io/2018/06/21/PythonSqlServer%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>https://www.duzehua.top/2020/07/11/tf_app_flags_FLAGS/</loc>
     
-    <lastmod>2018-06-21T13:21:11.609Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://duzehua.github.io/2018/06/20/%E5%8E%9F%E6%9D%A5%E6%98%AF%E9%B8%A1%E6%B1%A4%E5%95%8A/</loc>
-    
-    <lastmod>2018-06-20T14:50:53.543Z</lastmod>
+    <lastmod>2020-07-11T14:03:32.064Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://duzehua.github.io/categories/index.html</loc>
+    <loc>https://www.duzehua.top/2020/05/28/Matlabplot%E5%87%BD%E6%95%B0_%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</loc>
     
-    <lastmod>2018-06-17T04:36:33.720Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://duzehua.github.io/tags/index.html</loc>
-    
-    <lastmod>2018-06-17T04:35:54.896Z</lastmod>
+    <lastmod>2020-05-30T04:43:44.798Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://duzehua.github.io/about/index.html</loc>
+    <loc>https://www.duzehua.top/2020/04/15/Geopandas%E5%AE%89%E8%A3%85/</loc>
     
-    <lastmod>2018-06-17T04:29:01.478Z</lastmod>
+    <lastmod>2020-05-29T03:47:12.811Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://duzehua.github.io/archives/index.html</loc>
+    <loc>https://www.duzehua.top/2020/04/14/Hexo%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/</loc>
     
-    <lastmod>2018-06-16T15:35:49.433Z</lastmod>
+    <lastmod>2020-05-29T03:46:26.279Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.duzehua.top/2018/06/21/Python%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B/</loc>
+    
+    <lastmod>2020-05-29T03:45:42.764Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.duzehua.top/2018/06/20/PythonSqlServer%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    
+    <lastmod>2020-05-29T03:45:08.482Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.duzehua.top/2020/05/29/Python%E4%B9%8BAssert%E7%94%A8%E6%B3%95/</loc>
+    
+    <lastmod>2020-05-29T03:44:41.389Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.duzehua.top/2020/05/29/win732%E4%BD%8D%E5%AE%89%E8%A3%85%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA%E6%82%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%B8%8D%E6%98%AF%E7%A7%81%E5%AF%86%E8%BF%9E%E6%8E%A5/</loc>
+    
+    <lastmod>2020-04-15T02:35:21.560Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.duzehua.top/categories/index.html</loc>
+    
+    <lastmod>2018-06-17T04:36:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.duzehua.top/tags/index.html</loc>
+    
+    <lastmod>2018-06-17T04:35:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.duzehua.top/about/index.html</loc>
+    
+    <lastmod>2018-06-17T04:29:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.duzehua.top/archives/index.html</loc>
+    
+    <lastmod>2018-06-16T15:35:50.000Z</lastmod>
     
   </url>
   

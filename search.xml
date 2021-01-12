@@ -1,28 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[机器人学-学习笔记]]></title>
-    <url>%2F2018%2F06%2F29%2F%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%2F</url>
-    <content type="text"><![CDATA[前言:​ ——距离放下这门课已经差不多一年了, 知识点也已经忘了十有七八. 真是年龄越长, 忘性越大. 遂打算业余时间翻看翻看之前的书籍, 做做笔记. 也不枉学过一番. 但参照书本, 按照理解写写, 难免表述不当, 如果有伙计不小心看到我的博客, 还请见谅. 基础知识机器人位(置)姿(态) 表示​ 由于需要描述机器人不同部件之间, 以及机器人与外界之间的相对关系(通常指位姿关系), 需用到空间位置矢量, 姿态角等信息. 空间位置​ 通常使用笛卡尔空间坐标系描述相对位置关系, 应用3x1的位置矢量描述空间任意一点的位置. 对笛卡尔坐标系{A}, 空间任意一点p的位置可描述为: {}^Ap = \left[ {\begin{array}{*{20}{c}} {p_x} \\ {p_y} \\ {p_z} \\ \end{array}} \right]$p_x$ , $p_y$ 和$p_z$ 为点p 沿坐标系{A}的x,y,z三个轴线方向的坐标分量. 其中, $^Ap$ 中上标A代表参考坐标系{A}, 称$^Ap$为位置矢量. 姿态描述​ 为完成位姿关系的描述, 除要表示空间位置关系外, 还需要表示物体此时所处姿态(可理解为朝向). 首先直接来看一组姿态表示, 刚体B在坐标系{A} 中的姿态描述: _B^AR = \left[ {\begin{array}{*{20}{c}} {^A{x_B}} & {^A{y_B}} & {^A{z_B}} \\ \end{array}} \right] = \left[ {\begin{array}{*{20}{c}} {r_{11}} & {r_{12}} & {r_{13}} \\ {r_{21}} & {r_{22}} & {r_{23}} \\ {r_{31}} & {r_{32}} & {r_{33}} \\ \end{array}} \right]其中, $_B^AR $表示以坐标系{A}为参考坐标系, 刚体B的姿态表示({B}表示被描述的坐标系). 相对空间位置, 对初学者来说比较难以理解. 可以尝试从二维条件理解, 然后拓展到三维环境下. 首先看一组二维环境下的效果图: 由简单的几何推断就可以通过红色坐标系与黑色坐标系的夹角, 推断红点在黑色坐标系中的位置. 其写为矩阵描述为: \left[ {\begin{array}{*{20}{c}} {x'} \\ {y'} \\ {z'} \\ \end{array}} \right] = \left[ {\begin{array}{*{20}{c}} {c\theta } & { - s\theta } & 0 \\ {s\theta } & {c\theta } & 0 \\ 0 & 0 & 1 \\ \end{array}} \right]\left[ {\begin{array}{*{20}{c}} x \\ y \\ z \\ \end{array}} \right]式中, $s$表示$sin$, $c$表示$cos$. 由于是绕z轴旋转, 所以z坐标不发生改变. 等式右边第一个矩阵即为姿态(姿态)阵, 其描述了红色坐标系中的红点在黑色坐标系中的位置. 同理可得, 绕x轴, y轴, z轴旋转的姿态阵表述如下: \begin{array}{l} R\left( {x,\theta } \right) = \left[ {\begin{array}{*{20}{c}} 1 & 0 & 0 \\ 0 & {c\theta } & { - s\theta } \\ 0 & {s\theta } & {c\theta } \\ \end{array}} \right] \\ R\left( {y,\theta } \right) = \left[ {\begin{array}{*{20}{c}} {c\theta } & 0 & {s\theta } \\ 0 & 1 & 0 \\ { - s\theta } & 0 & {c\theta } \\ \end{array}} \right] \\ R\left( {z,\theta } \right) = \left[ {\begin{array}{*{20}{c}} {c\theta } & { - s\theta } & 0 \\ {s\theta } & {c\theta } & 0 \\ 0 & 0 & 1 \\ \end{array}} \right] \\ \end{array}设想, 如果存在另一个蓝色坐标中的蓝点blue绕红色坐标系$y$旋转$\theta ‘$. 则其在黑色坐标系中的位置是不是可以如下表示: \left[ {\begin{array}{*{20}{c}} {x''} \\ {y''} \\ {z''} \\ \end{array}} \right] = \left[ {\begin{array}{*{20}{c}} {c\theta '} & 0 & {s\theta '} \\ 0 & 1 & 0 \\ { - s\theta '} & 0 & {c\theta '} \\ \end{array}} \right]\left[ {\begin{array}{*{20}{c}} {x'} \\ {y'} \\ {z'} \\ \end{array}} \right] = \left[ {\begin{array}{*{20}{c}} {c\theta '} & 0 & {s\theta '} \\ 0 & 1 & 0 \\ { - s\theta '} & 0 & {c\theta '} \\ \end{array}} \right]\left[ {\begin{array}{*{20}{c}} {c\theta } & { - s\theta } & 0 \\ {s\theta } & {c\theta } & 0 \\ 0 & 0 & 1 \\ \end{array}} \right]\left[ {\begin{array}{*{20}{c}} x \\ y \\ z \\ \end{array}} \right]设蓝色坐标系为{C}, 红色坐标系为{B}, 黑色坐标系为{A}, 蓝点在蓝色坐标系中的位置为${}^C{P_{blue}}$, 蓝点在黑色坐标系中的位置为${}^A{P_{blue}}$. 则上述表达可简写为: {}^A{P_{blue}} = {}_C^BR{}^C{P_{blue}} = {}_B^AR{}_C^BR{}^C{P_{blue}}这便是链式法则, 果然简单又容易理解. 然鹅, 现实中的位置和姿态描述并不是如此, 如黑色坐标系和红色坐标系的原点不重合, 我们又该进行表示红色坐标系的红点在黑色坐标系的表示呢? 对, 只需要把红色坐标系原点相对于黑色坐标系的位置先行描述一下, 即在姿态阵中添加红色坐标系的原点描述成分. 这样, 在需要描述红点时, 先把红色坐标系的原点位置找到, 继而描述红点就好了. 那么问题来了, 总感觉红色坐标系中的红点在黑色坐标系中的描述, 会因为转角改变, 距离发生变化. 但想象一下, 红点相对于红色坐标系时固定的, 而红色坐标系的原点相对于黑色坐标系原点的距离是固定的(旋转嘛), 那么同样红点相对黑色坐标系的原点距离不会变的. 表达如下: 参考文献:= 机器人学, 蔡自兴 …]]></content>
+    <title></title>
+    <url>%2F2021%2F01%2F12%2FPythoh%E9%85%8D%E7%BD%AE%E6%B8%85%E5%8D%8E%E6%BA%90%2F</url>
+    <content type="text"><![CDATA[pip清华源官方配置方法：按照官网提示，pip配置清华源的方法如下： 临时使用1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package 注意，simple 不能少, 是 https 而不是 http 设为默认升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置： 12pip install pip -Upip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple 如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip： 1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U 报错应对措施正常情况下，脚本可成功安装运行。但在某些特殊情况下，运行“pip install pip -U”命令时出现错误，如下： 12Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问。: &apos;X:\\anaconda3\\scripts\\pip.exe&apos;Consider using the `--user` option or check the permissions. 再次运行“pip install pip -U”命令，出现： 12C:\Users\Administrator&gt;pip install pip -U --userScript file &apos;D:\Anaconda3\Scripts\pip-script.py&apos; is not present. 因为使用了 “install -U” 导致pip被自动卸载，无法使用pip实现再次安装。当出现这种错误时，首先切换到anaconda安装路径下的Scripts目录下（即Python的Scripts目录），cmd运行如下命令 1easy_install pip easy_install和pip均可下载安装PyPI资源包。其中，pip是easy_install的改进版。 当提示pip安装成功时，再次运行官方配置方法即可。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[tf_app_flags_FLAGS]]></title>
+    <url>%2F2020%2F07%2F11%2Ftf_app_flags_FLAGS%2F</url>
+    <content type="text"><![CDATA[描述tf.app.flags是Tensorflow提供的功能模块，用于Tensorflow在通过命令行运行脚本时，通过可选参数的形式修改原来脚本中指定变量的默认参数。 使用方法123FLAGS = tf.app.flags.FLAGS # 定义变量，用于提取参数tf.app.flags.DEFINE_XXXX(flag_name='xxx_n', default_value=xx, docstring='xxx_h') 其中，flag_name表示标志位的名称，default_value表示标志位的值，值的类型应与DEFINE_XXXX中的XXXX对应，其可选的数据类型有：string(即tf.app.flags.DEFINE_string，其它同理)、integer、DEFINE_boolean、float，当定义了指定标志位，在命令行运行过程中，可通过 1python py_filename.py --xxx_n1 --xxxn2 来实现对脚本中，指定的变量内容的修改。 示例：123456789FLAGS = tf.app.flags.FLAGStf.app.flags.DEFINE_integer(flag_name='a', default_value=64, docstring='变量a')# 定义string型flagtf.app.flags.DEFINE_string(flag_name='b', default_value='hello world', docstring='字符串b')print(FLAGS.a, FLAGS.b) 编写上述脚本并保存到 ‘testFlag.py’ 文件中，通过命令提示符运行 1python testFlag.py 得到输出 164 hello world 而如果在运行py文件的同时，对变量a和b进行赋值操作，即 1python testFlag.py --a 10 --b "Hello World" 则有如下输出 110 Hello World]]></content>
       <categories>
-        <category>机器人</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>机器人学</tag>
-        <tag>运动学</tag>
-        <tag>动力学</tag>
+        <tag>code</tag>
+        <tag>Tensorflow</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Python-SQL Server数据库]]></title>
-    <url>%2F2018%2F06%2F21%2FPythonSqlServer%E6%95%B0%E6%8D%AE%E5%BA%93%2F</url>
-    <content type="text"><![CDATA[SQL Server 数据库(待完善):导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect("Provider=SQLOLEDB; SERVER='IP地址:端口'; Initial Catalog=数据库名称;User Id=sa; Password=密码; ")# 方法二conn = pymssql.connect(host='IP地址:端口', user='sa', password='密码', database='数据库名称', charset='utf8') 使用连接对象获得一个cursor对象 1cursor = conn.cursor() 使用cursor操作数据库操 命令汇总: callproc(self, procname, args): execute(self, query, args): executemany(self, query, args): nextset(self): 12345# 使用示例sql="insert into student values (%s,%s,%s)" # 所有数据类型均用s%param=(1, ManQi,18) # param应为tuple或list# 插入一条数据n=cursor.execute(sql,param) 执行cursor接收操作数据库返回值. 方法汇总: fetchall(self): 接收全部元组. fetchmany(self, size=None): 接收不大于size条返回结果行. fetchone(self): 返回一条元组. scroll(self, value, mode=’relative’): 1result = cursor.fetchall() # result为tuple类型, 其中单条结果也为tuple类型数据, 在对数据库进行增删操作后, 需提交. 否则修改无效. 1conn.commit() 操作结束, 执行关闭操作. 12cursor.close() # 关闭指针对象conn.close() # 关闭连接对象 附, 简单的数据库语句 1234567891011121314151617/*表: student结构: id(int), name(varchar(MAX)), age(varchar(MAX))*/--插入一条数据insert into student values (1,ManQi,18)--返回名为ManQi, 且年龄为空的第一条数据select top 1 id from student where (name = 'ManQi') and (age is null)--更新id为1的名字update student set name = 'TY' where id = 1--即删除字段为某值的所有记录delete from 表名 where 字段=某值 --将表中字段为某值的替换为nullupdate 表名 set 字段=null where 字段=某值 --显示表格所有信息select * from student/*注意到, sql中空为null, python中为none*/]]></content>
+    <title><![CDATA[Python之Assert用法]]></title>
+    <url>%2F2020%2F05%2F29%2FPython%E4%B9%8BAssert%E7%94%A8%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[Python 的assert可用于判断表达式是否成立，在表达式条件为 false 时候触发。在编程实现时，在有可能出现异常的位置建立判断表达式，用以及时发现并阻止程序的异常运行状态。 语法格式为： 123456'方式1'assert 表达式, 错误信息提示'方式2'if not 表达式: raise AssertionError(错误信息提示) 示例： 对变量a, b内容是否相等的判断 123a = 1b = 1assert a == b, '变量a,b不相等' 运行结果无任何标识，即没有触发错误信息提示内容。 123a = 1b = 2assert a == b, '变量a,b不相等' 运行结果为 123Traceback (most recent call last): File "&lt;stdin&gt;", line 1, in &lt;module&gt;AssertionError: 变量a,b不相等 由于表达式不成立，触发assert停止程序继续运行，并将错误信息提示内容打印。]]></content>
       <categories>
-        <category>编程</category>
+        <category>python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>数据库</tag>
+        <tag>code</tag>
+        <tag>异常处理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[32位Win7显示“您的链接不是私密链接”]]></title>
+    <url>%2F2020%2F05%2F29%2Fwin732%E4%BD%8D%E5%AE%89%E8%A3%85%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA%E6%82%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%B8%8D%E6%98%AF%E7%A7%81%E5%AF%86%E8%BF%9E%E6%8E%A5%2F</url>
+    <content type="text"><![CDATA[在新安装的32位Win7系统中安装谷歌浏览器，在浏览https网页时，始终提示“您的连接不是私密连接”，并且部分网页不能够继续浏览，如图 可尝试在桌面快捷方式的“属性”-“目标”的末尾，添加 “—test-type —ignore-certificate-errors”即可]]></content>
+      <categories>
+        <category>故障排除</category>
+      </categories>
+      <tags>
+        <tag>系统故障</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Matlab编程之绘图与可视化]]></title>
+    <url>%2F2020%2F05%2F28%2FMatlabplot%E5%87%BD%E6%95%B0_%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%2F</url>
+    <content type="text"><![CDATA[matlab具有强大的数据可视化能力，其常见的绘图函数包括plot、surf、bar等，可以满足大部分的可视化需求。 官方示例： 定义x轴为介于0-2pi之间的等分数组，使用正弦函数计算对应的y值。 12x = 0:pi/100:2*pi;y = sin(x); 使用plot函数创建图像 12figure % opens new figure windowplot(x,y) 坐标轴设定默认条件下，坐标轴是按照需要绘制数据的上下限来等分显示的。然而，在某些条件下，数据的非均匀分布、部分区间数据的突出显示等需求，使得坐标轴需要能够满足自定义设定。 自定义放缩部分区间简单对示例图像，如果想将区间[1, 2]的数据放大显示，而其它区间配合达到渐近变化效果，需对x轴数据进行调整，可根据想要突出显示的数值点手动设值 12x = [0 1 1.2 1.4 1.5 1.6 1.8 2.0 4.0 8.0 10.0];y = sin(x); 同时，绘图时窗口轴的设定相应修改 12345678figure % opens new figure windowindex = 1:length(x);plot(index,y);set(gca,'XTick',index);for i = 1:length(x) xTL = [xTL, &#123;num2str(x(i))&#125;];endset(gca,'XTickLabel',xTL); 图像内容如下 可以看出，由于绘制的数据点数过少，图像出现了严重的锯齿状。 进阶为解决上一问题，可在上述x数组的各点间均匀插值。在绘图时，只显示需要的几个点，即 12345678x = [0 1 1.2 1.4 1.5 1.6 1.8 2.0 4.0 8.0 10.0];X = [0];rs = 200;for i = 1:length(x)-1 x_ = linspace(x(i), x(i+1), rs); X = [X, x_(2:end)];endy = sin(X); 绘图时窗口轴的设定相应修改 123456789figure % opens new figure windowindex = 1:length(X);plot(index,y);set(gca,'XTick',index(1:rs-1:end));xTL = [];for i = 1:length(x) xTL = [xTL, &#123;num2str(x(i))&#125;];endset(gca,'XTickLabel',xTL); 可得如下图像 可以看出，经过处理的图像实现了平滑的显示，但在手动设定点处依然存在不平滑的现象。 高级进一步，为了实现完全平滑的区间放大效果，引入高斯函数，设定放大中心点和放大比例。代码如下 123456789101112131415161718192021222324252627282930313233343536x = linspace(pi,5*pi,500);%% x轴缩放设定center = 6/2*pi; % 中心点位置scale = 2; % &gt;0，缩放比例，随着数值的增大，放大效果减小X1 = 1 ./ (0.01/1000 + gaussmf(x,[scale, center]));X1 = X1 ./ max(X1);X1_min = min(X1);X2 = x(1):X1_min:x(end);X2 = [];X1_sum = 0;for i = 1:length(X1) X1_sum = X1_sum + X1(i); X2 = [X2, X1_sum];endX2 = x(1) + (X2 - min(X2)) .* (x(end) - x(1))/(X2(end) - X2(1));%% 需要显示的函数y1 = sin(x);y2 = sin(X2);%% 刻度设定index = 1:length(X2);xTick_num = 7; % 需要显示的刻度个数XTick_ = round(linspace(index(1), index(end), xTick_num));XTickLabel_ = X2(XTick_);XTickLabels_ = [];for i = 1:length(XTickLabel_) XTickLabels_ = [XTickLabels_, &#123;num2str(XTickLabel_(i))&#125;];end%% 绘图figuresubplot(2,1,1)plot(x, y1)axis([x(1) x(end) -1 1]);subplot(2,1,2)plot(index,y2)set(gca,'XTick',XTick_) % 设定需要显示的刻度set(gca,'XTickLabel',XTickLabel_); 可以得到如下图像 如此，只需要少量的设定操作即可得到完美的部分区间放大效果，但如果想进一步自定义效果，修改代码则相对繁琐。 当然，如果想部分突出y轴区间内容，则需要在得到的y轴数据中非等间隔提取y数据和对应的x数据，以基本同样的方式绘制图像。 半对数坐标显示在没有苛刻要求的条件下，matlab同样提供了方便的半对数坐标，用于简单的实现非均匀刻度的坐标轴显示，半对数坐标系一个轴是分布均匀的普通坐标轴，另一个轴是分布不均匀的对数坐标轴。当横坐标为对数坐标时使用semilogx，而纵坐标为对数坐标时使用semilogy，两个坐标都需要对数形式时使用loglog(双对数)。以纵坐标为例，定义x, y轴数据 12x = linspace(0,10,1000);y = x.^2; 分别使用均匀坐标刻度显示和对数坐标刻度显示 12345678910111213figuresubplot(1,3,1);plot(x,y);axis([0,10,0,100])subplot(1,3,2)semilogy(x,y)subplot(1,3,3)semilogy(x,y)set(gca,'YTick',[0.001 0.01 0.1 1 10 100]) % 设定需要显示的刻度set(gca, 'YtickLabel', &#123;'0.001', '0.01', '0.1', '1', '10', '100'&#125;); % 修改显示的值 如果不想使用默认的对数刻度显示形式，可以参照图3对应的代码修改y轴显示的数值内容，得到结果图像如下]]></content>
+      <categories>
+        <category>matlab</category>
+      </categories>
+      <tags>
+        <tag>code</tag>
+        <tag>可视化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GeoPandas安装与入门]]></title>
+    <url>%2F2020%2F04%2F15%2FGeopandas%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[根据GeoPandas项目的描述，其是一个方便使用Python来进行地理空间数据处理的开源项目。GeoPandas扩展了Pandas的数据类型，可以使其在几何类型上进行空间操作。本文主要介绍安装过程和简易的入门应用。 1、运行环境： Win 10 家庭版 Anaconda 3 python 3.6.2 pycharm 2、GeoPandas安装2.1 依赖包安装从第三方插件库(https://www.lfd.uci.edu/~gohlke/pythonlibs/)依次下载并使用pip安装如下依赖： 依赖名称 版本 Shapely 1.7.0 pyproj 2.6.0 GDAl 3.0.4 Fiona 1.8.13 2.2 geopandas安装使用pip命令，安装geopandas即可。 1pip install geopandas 3、简单示例3.1 环境配置pycharm新建项目，为避免出现如下错误 在新建项目时，选择新建虚拟项目的同时，选中Inherit global site-packages复选框。 3.2 绘制世界地图新建py脚本，导入依赖 1234import pandas as pdimport numpy as npimport geopandasimport matplotlib.pyplot as plt 读取geopandas自带的数据 1world = geopandas.read_file(geopandas.datasets.get_path('naturalearth_lowres')) 直接绘制地图数据 12world.plot()plt.show() 将得到如下所示图像 3.3 查看数据格式如果希望对导入的geopandas格式数据进行处理，则需要进一步了解该数据格式的组成。添加适应于数据表格显示的依赖，并设置pandas的显示属性。 123456import pprint#显示所有列pd.set_option('display.max_columns', None)#显示5行pd.set_option('display.max_rows', 5) 打印导入的世界地图数据，可以得到如下形式的输出 1pprint.pprint(world) 可以看出，数据格式依然保持表格的形式，而如果我们想在此基础上添加一些定制化的内容，如对不同的国家添加经济总量，并根据经济总量多少以不同颜色进行图像绘制，则可以按照与Pandas同样的操作进行。 例如，已知共有178个国家，设定属性“property_1”，为中国赋值为10000，其它国家为0。 123456world['property_1'] = pd.Series(np.array(list(range(1, 178))))index = world[world.name == 'China'].haha.tolist()index = index[0]-1world.loc[index, 'property_1'] = 10000 在此基础上，参照各个国家的“property_1”值绘制图像。 123fig, ax = plt.subplots(1, 1)world.plot(column='property_1', ax=ax, legend=True)plt.show() 以上是对geopandas的安装和简单应用，可根据实际需求做进一步了解和应用。]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>code</tag>
+        <tag>可视化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo本地部署]]></title>
+    <url>%2F2020%2F04%2F14%2FHexo%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%2F</url>
+    <content type="text"><![CDATA[学习使用Hexo在本地搭建个人博客，并通过nginx服务器进行部署。 1、准备工作： 下载安装Git客户端，官网链接 https://git-scm.com/downloads 下载安装node.js， 官网链接 http://nodejs.cn/download/ 下载nginx并解压到本地目录，后面部署博客时将会用到，官网链接 http://nginx.org/en/download.html 2、Hexo安装配置2.1 hexo 安装在本地任意目录下新建文件夹，文件夹命名自定义。鼠标右击该文件夹选择“Git Bash Here”。 在启动的终端界面中，输入如下命令进行hexo的安装，当出现下图所示内容时，表示安装成功。 1npm install -g hexo-cli 2.2 初始化与生成运行初始化方法，初始化新建博客项目。其中，i是初始化init的缩写，blog代表项目名。 1hexo i blog 通过cd命令切换到新建的博客项目中，使用generate或g生成博客。 123456// 切换到博客目录cd blog // 两种博客生成方式hexo ghexo generate 2.3 本地发布通过服务命令来实现构建博客的本地发布 123// 两种博客发布方式hexo shexo server 运行成功后，通过提示信息可以看到，在浏览器输入http://localhost:4000便可以访问刚刚构建成功的本地博客。 如果想停止启动的服务，通过组合键“ctrl+c”即可。自带的主题形式比较单一，可以在hexo的主题官网https://hexo.io/themes/查找自己喜欢的主题，或者配置符合自己审美的自定义布局，不再赘述。 3、Nginx部署3.1 nginx解压通过hexo s命令启动的博客服务，据说效率较低，因此使用简单高效的nginx服务器来实现博客的部署。将下载好的nginx压缩包解压到本地任意目录。 3.2 修改默认访问端口，可选为防止由于80端口占用导致的访问失败，可提前修改默认访问端口。打开nginx解压后目录中的配置文件conf/nginx.conf，编辑nginx服务器的默认端口，找到如下代码，修改listen监听的端口号为自定义端口号 123456789server &#123; listen 8080; // 默认 80 server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html; index index.html index.htm; &#125; 3.3 nginx访问打开cmd并切换到nginx解压目录，运行命令 1start nginx 在浏览器输入http://127.0.0.1:8080即可看到nginx的欢迎界面，其中8080为自定义的端口号。 3.4 nginx部署hexo将hexo g命令生成的博客中的public文件夹(默认生成的静态站点)，复制到nginx目录下的html文件夹中，并修改刚才的配置文件conf/nginx.conf 123456789server &#123; listen 8080; // 默认 80 server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html/public; // 由html改为html/public index index.html index.htm; &#125; 在命令行使用nginx服务的重新加载功能，即可实现对public博客内容的显示。 1nginx -s reload 至此，便完成了hexo的本地部署，如果想通过域名访问，则可以购买一个实惠的域名，找一个趁手的内网穿透工具以实现域名访问。]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>code</tag>
+        <tag>博客搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -30,20 +81,23 @@
     <url>%2F2018%2F06%2F21%2FPython%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[多线程与多进程:​ python中可方便实现多线程与多进程. 而由于全局解释器锁的存在, 多线程实际为将多个单线程拆分为执行序列, 每个时刻只执行其中一个线程, 因而python中的多线程更适合于IO密集型操作. 为充分利用多核cpu资源, 执行计算密集型操作, 可引用多进程操作. ​ 接下在就工程中涉及到的多线程与多进程应用的数种方法, 示例记录, 便于记忆. 多线程:导入环境 12import timeimport threading 在派生类中重写父类threading.Thread的run()方法. 注意, 子类中只有init()和run()方法被重写. 然后在主线程中生成子线程类的对象, 调用start()方法运行. 123456789101112class MyThread(threading.Thread): def __init__(self): threading.Thread.__init__(self) def run(self): global iterNum, threadLock # 多线程中, 通过定义全局变量实现数据共享 time.sleep(1) if threadLock.acquire(): print(iterNum , self.name) iterNum += 1 threadLock.release() 主程序中创建线程并调用 123456789101112131415161718192021if "__main__" == __name__: start_time = time.time() print('主线程名称：', threading.current_thread().name) iterNum = 1 threadList = [] lock = threading.Lock() # 创建200个线程, 存入list for index in range(5): thread_ = MyThread() threadList.append(index) # 开启线程 for thread_ in ThreadList: # thread_.setDaemon(True) # 设置线程守护 thread_.start() print('主线程: ' + threading.current_thread().name + '结束') print('共计耗时：', time.time()-start_time) 上述代码中, 通过start()方法开启线程. 注意到, 开启线程前存在一个注释掉的守护线程setDaemon(). setDaemon()默认false, 表示主线程执行完任务后会退出, 而子线程继续执行直到任务完成. 该条件下, 结果如下: 12345678910主线程名称： MainThread主线程: MainThread结束共计耗时： 0.00100302696228027341 Thread-42 Thread-13 Thread-54 Thread-25 Thread-3Process finished with exit code 0 接下来, 取消注释, 设置守护线程为true, 代码为: 123456789101112131415161718192021if "__main__" == __name__: start_time = time.time() print('主线程名称：', threading.current_thread().name) iterNum = 1 threadList = [] lock = threading.Lock() # 创建200个线程, 存入list for index in range(5): thread_ = MyThread() threadList.append(index) # 开启线程 for thread_ in ThreadList: thread_.setDaemon(True) # 设置线程守护 thread_.start() print('主线程: ' + threading.current_thread().name + '结束') print('共计耗时：', time.time()-start_time) 结果如下: 12345主线程名称： MainThread主线程: MainThread结束共计耗时： 0.0009665489196777344Process finished with exit code 0 可以看出, 主线程运行结束, 由于守护线程的缘故, 直接将子线程杀死, 不再继续运行. 而部分条件下, 我们需要的结果是当主线程开启, 等待子线程运行结束后, 再结束主线程. 此时, 可以通过使用join()来实现, 代码如下: 123456789101112131415161718192021222324if "__main__" == __name__: start_time = time.time() print('主线程名称：', threading.current_thread().name) iterNum = 1 threadList = [] lock = threading.Lock() # 创建200个线程, 存入list for index in range(5): thread_ = MyThread() threadList.append(index) # 开启线程 for thread_ in ThreadList: thread_.setDaemon(True) # 设置线程守护 thread_.start() for thread_ in ThreadList: thread_.join() print('主线程: ' + threading.current_thread().name + '结束') print('共计耗时：', time.time()-start_time) join()中存在一个timeout参数, 当设置守护线程时, 主线程等待timeout时间后再执行杀死子线程的操作. 当timeout不设定时, 表示等待子线程运行结束后, 再结束主线程. 上述代码运行结果如下: 12345678910主线程名称： MainThread1 Thread-52 Thread-23 Thread-34 Thread-15 Thread-4主线程: MainThread结束共计耗时： 1.006718397140503Process finished with exit code 0 可以看出, 主线程以及计时均等待子线程结束后才开始实现. 当设定timeout时, 以下述两种情况为例: 12345678910111213141516171819202122# 设定 timeout = 0, 则5个子线程共计等待 0 * 5 = 0s, 即主线程不等待直接杀死子线程.for thread_ in ThreadList: thread_.join(0)主线程名称： MainThread主线程: MainThread结束共计耗时： 0.005353212356567383Process finished with exit code 0# 设定 timeout = 0.2, 则5个子线程共计等待 0.2 * 5 = 1s, 主线程等待1s后杀死子线程.for thread_ in ThreadList: thread_.join(0.2)主线程名称： MainThread1 Thread-32 Thread-13 Thread-5主线程: MainThread结束共计耗时： 1.0059242248535156Process finished with exit code 0 可以看出, 当timeout设定为0.2s时, 有三个子线程运行结束, 仍有两个没来得及运行即被杀死. 多进程​ 相对于多线程来说, 多进程操作中, 每一个子进程会作为真正独立的程序运行. 多线程运行过程中, 一个线程异常将导致整个程序故障. 而多进程中, 一个子进程异常基本不会影响其他进程的运行, 因而具有一定的稳定性, 但也较难以调试和控制. 此外, 多进程间的数据传递无法通过设置全局变量实现, 必须通过其专有的队列, 管道或共享内存的方式实现. 导入环境 1import multiprocessing 为防止由于多个子进程导致的系统假死, 在主函数的最开始, 添加如下语句: 1multiprocessing.freeze_support() 启动子进程的几种方法 123456789101112131415# 方法1process1 = multiprocessing.Process(target=processFun1, args=(param,))process2 = multiprocessing.Process(target=processFun2, args=(param,))process1.start()process2.start()# 方法2:pool = multiprocessing.Pool(processes=2) # 创建进程池, 参数可缺省pool.apply_async(processFun1, (param, ))pool.apply_async(processFun2, (param, ))pool.close() # 关闭进程池，表示不能在往进程池中添加进程pool.join() # 含义同多线程join()，必须在close()之后调用 进程间数据共享支持queue, pipi, value和array. 但是python提供的更高层次的封装, 在我觉得使用起来更加方便, 而这些高级接口的调用, 可通过multiprocessing.Manager()方便的进行调用. multiprocessing.Manager()支持list, dict, Namespace, Lock, RLock, Semaphore, BoundedSemaphore, Condition, Event, Queue, Value和Array. 1234multiProcessManager = multiprocessing.Manager()# list定义与调用示例mPMList = multiProcessManager.list([0] * 10)callLlist = mPMList.value]]></content>
       <categories>
-        <category>编程</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>多线程</tag>
-        <tag>多进程</tag>
+        <tag>code</tag>
+        <tag>并行计算</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[原来是鸡汤啊~]]></title>
-    <url>%2F2018%2F06%2F20%2F%E5%8E%9F%E6%9D%A5%E6%98%AF%E9%B8%A1%E6%B1%A4%E5%95%8A%2F</url>
-    <content type="text"><![CDATA[“我不去想是否能够成功, 既然选择了远方, 便只顾风雨兼程”. ——汪国真 “当生活很着急地步入正轨, 然后拿做完事情之余和空闲时间来看点什么的时候, 也是比无所事事玩手机的时候来得真开心”. ——刘佳楠 “要谨记美言不可信, 要善于识别过眼烟云. 不要轻信唯一正确, 不能执着于左右两端, 要做到通而不痛, 远离烦恼, 创新永远”. ——钱旭红]]></content>
+    <title><![CDATA[Python-SQL Server数据库]]></title>
+    <url>%2F2018%2F06%2F20%2FPythonSqlServer%E6%95%B0%E6%8D%AE%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[SQL Server 数据库(1):导入环境: 12import pymssqlimport adodbapi 建立数据库连接 1234# 方法一conn = adodbapi.connect("Provider=SQLOLEDB; SERVER='IP地址:端口'; Initial Catalog=数据库名称;User Id=sa; Password=密码; ")# 方法二conn = pymssql.connect(host='IP地址:端口', user='sa', password='密码', database='数据库名称', charset='utf8') 使用连接对象获得一个cursor对象 1cursor = conn.cursor() 使用cursor操作数据库操 命令汇总: callproc(self, procname, args): execute(self, query, args): executemany(self, query, args): nextset(self): 12345# 使用示例sql="insert into student values (%s,%s,%s)" # 所有数据类型均用s%param=(1, ManQi,18) # param应为tuple或list# 插入一条数据n=cursor.execute(sql,param) 执行cursor接收操作数据库返回值. 方法汇总: fetchall(self): 接收全部元组. fetchmany(self, size=None): 接收不大于size条返回结果行. fetchone(self): 返回一条元组. scroll(self, value, mode=’relative’): 1result = cursor.fetchall() # result为tuple类型, 其中单条结果也为tuple类型数据, 在对数据库进行增删操作后, 需提交. 否则修改无效. 1conn.commit() 操作结束, 执行关闭操作. 12cursor.close() # 关闭指针对象conn.close() # 关闭连接对象 附, 简单的数据库语句 1234567891011121314151617/*表: student结构: id(int), name(varchar(MAX)), age(varchar(MAX))*/--插入一条数据insert into student values (1,ManQi,18)--返回名为ManQi, 且年龄为空的第一条数据select top 1 id from student where (name = 'ManQi') and (age is null)--更新id为1的名字update student set name = 'TY' where id = 1--即删除字段为某值的所有记录delete from 表名 where 字段=某值 --将表中字段为某值的替换为nullupdate 表名 set 字段=null where 字段=某值 --显示表格所有信息select * from student/*注意到, sql中空为null, python中为none*/]]></content>
       <categories>
-        <category>鸡汤</category>
+        <category>Python</category>
       </categories>
+      <tags>
+        <tag>code</tag>
+        <tag>数据库</tag>
+      </tags>
   </entry>
 </search>
