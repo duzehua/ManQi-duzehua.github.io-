@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[pip清华源官方配置方法]]></title>
     <url>%2F2021%2F01%2F12%2FPythoh%E9%85%8D%E7%BD%AE%E6%B8%85%E5%8D%8E%E6%BA%90%2F</url>
-    <content type="text"><![CDATA[pip清华源官方配置方法：按照官网提示，pip配置清华源的方法如下： 临时使用1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package 注意，simple 不能少, 是 https 而不是 http 设为默认升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置： 12pip install pip -Upip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple 如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip： 1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U 报错应对措施正常情况下，脚本可成功安装运行。但在某些特殊情况下，运行“pip install pip -U”命令时出现错误，如下： 12Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问。: &apos;X:\\anaconda3\\scripts\\pip.exe&apos;Consider using the `--user` option or check the permissions. 再次运行“pip install pip -U”命令，出现： 12C:\Users\Administrator&gt;pip install pip -U --userScript file &apos;D:\Anaconda3\Scripts\pip-script.py&apos; is not present. 因为使用了 “install -U” 导致pip被自动卸载，无法使用pip实现再次安装。当出现这种错误时，首先切换到anaconda安装路径下的Scripts目录下（即Python的Scripts目录），cmd运行如下命令 1easy_install pip easy_install和pip均可下载安装PyPI资源包。其中，pip是easy_install的改进版。 当提示pip安装成功时，再次运行官方配置方法即可。]]></content>
+    <content type="text"><![CDATA[官方配置方法：按照官网提示，pip配置清华源的方法如下： 临时使用1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package 注意，simple 不能少, 是 https 而不是 http 设为默认升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置： 12pip install pip -Upip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple 如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip： 1pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U 报错应对措施正常情况下，脚本可成功安装运行。但在某些特殊情况下，运行“pip install pip -U”命令时出现错误，如下： 12Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问。: &apos;X:\\anaconda3\\scripts\\pip.exe&apos;Consider using the `--user` option or check the permissions. 再次运行“pip install pip -U”命令，出现： 12C:\Users\Administrator&gt;pip install pip -U --userScript file &apos;D:\Anaconda3\Scripts\pip-script.py&apos; is not present. 因为使用了 “install -U” 导致pip被自动卸载，无法使用pip实现再次安装。当出现这种错误时，首先切换到anaconda安装路径下的Scripts目录下（即Python的Scripts目录），cmd运行如下命令 1easy_install pip easy_install和pip均可下载安装PyPI资源包。其中，pip是easy_install的改进版。 当提示pip安装成功时，再次运行官方配置方法即可。]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>pip</tag>
+        <tag>Python</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[tf_app_flags_FLAGS]]></title>
